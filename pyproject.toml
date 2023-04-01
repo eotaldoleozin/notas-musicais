@@ -6,6 +6,8 @@ authors = ["leonardo <leo-alves14@hotmail.com>"]
 readme = "README.md"
 packages = [{include = "notas_musicais"}]
 
+[tool.poetry.scripts]
+escalas = "notas_musicais.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.11"
