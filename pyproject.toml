@@ -6,8 +6,11 @@ authors = ["leonardo <leo-alves14@hotmail.com>"]
 readme = "README.md"
 packages = [{include = "notas_musicais"}]
 
+
 [tool.poetry.dependencies]
 python = "^3.11"
+typer = "^0.7.0"
+rich = "^13.3.3"
 
 
 [tool.poetry.group.dev.dependencies]
