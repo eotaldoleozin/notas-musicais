@@ -37,24 +37,36 @@ def test_deve_retornar_um_erro_dizendo_que_a_escala_nao_existe():
 
 
 @mark.parametrize(
-    'tonica, esperado',
+    'tonica, tonalidade, esperado',
     [
-        ('C', 'C D E F G A B'.split()),
-        ('C#', 'C# D# F F# G# A# C'.split()),
-        ('D', 'D E F# G A B C#'.split()),
-        ('D#', 'D# F G G# A# C D'.split()),
-        ('E', 'E F# G# A B C# D#'.split()),
-        ('F', 'F G A A# C D E'.split()),
-        ('F#', 'F# G# A# B C# D# F'.split()),
-        ('G', 'G A B C D E F#'.split()),
-        ('G#', 'G# A# C C# D# F G'.split()),
-        ('A', 'A B C# D E F# G#'.split()),
-        ('A#', 'A# C D D# F G A'.split()),
-        ('B', 'B C# D# E F# G# A#'.split()),
+        ('C', 'maior', 'C D E F G A B'.split()),
+        ('C#', 'maior', 'C# D# F F# G# A# C'.split()),
+        ('D', 'maior', 'D E F# G A B C#'.split()),
+        ('D#', 'maior', 'D# F G G# A# C D'.split()),
+        ('E', 'maior', 'E F# G# A B C# D#'.split()),
+        ('F', 'maior', 'F G A A# C D E'.split()),
+        ('F#', 'maior', 'F# G# A# B C# D# F'.split()),
+        ('G', 'maior', 'G A B C D E F#'.split()),
+        ('G#', 'maior', 'G# A# C C# D# F G'.split()),
+        ('A', 'maior', 'A B C# D E F# G#'.split()),
+        ('A#', 'maior', 'A# C D D# F G A'.split()),
+        ('B', 'maior', 'B C# D# E F# G# A#'.split()),
+        ('C', 'menor', 'C D D# F G G# A#'.split()),
+        ('C#', 'menor', 'C# D# E F# G# A B'.split()),
+        ('D', 'menor', 'D E F G A A# C'.split()),
+        ('D#', 'menor', 'D# F F# G# A# B C#'.split()),
+        ('E', 'menor', 'E F# G A B C D'.split()),
+        ('F', 'menor', 'F G G# A# C C# D#'.split()),
+        ('F#', 'menor', 'F# G# A B C# D E'.split()),
+        ('G', 'menor', 'G A A# C D D# F'.split()),
+        ('G#', 'menor', 'G# A# B C# D# E F#'.split()),
+        ('A', 'menor', 'A B C D E F G'.split()),
+        ('A#', 'menor', 'A# C C# D# F F# G#'.split()),
+        ('B', 'menor', 'B C# D E F# G A'.split()),
     ],
 )
-def test_deve_retornar_as_notas_corretas(tonica, esperado):
-    resultado = escala(tonica, 'maior')
+def test_deve_retornar_as_notas_corretas(tonica, tonalidade, esperado):
+    resultado = escala(tonica, tonalidade)
     assert resultado['notas'] == esperado
 
 
