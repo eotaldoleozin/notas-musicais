@@ -44,3 +44,20 @@ def test_acorde_cli_deve_conter_as_notas_na_resposta(nota):
 def test_acorde_cli_deve_conter_todos_os_graus(grau):
     result = runner.invoke(app, ['acorde', 'D'])
     assert grau in result.stdout
+
+
+def test_campo_harmonico_cli_deve_retornar_0_ao_stdout():
+    result = runner.invoke(app, ['campo-harmonico'])
+    assert result.exit_code == 0
+
+
+@mark.parametrize('acorde', 'C Dm Em F G Am B°'.split())
+def test_campo_harmonico_cli_deve_conter_os_acordes_na_resposta(acorde):
+    result = runner.invoke(app, ['campo-harmonico'])
+    assert acorde in result.stdout
+
+
+@mark.parametrize('grau', 'I ii iii IV V vi vii°'.split())
+def test_campo_harmonico_cli_deve_conter_todos_os_graus(grau):
+    result = runner.invoke(app, ['campo-harmonico', 'D'])
+    assert grau in result.stdout

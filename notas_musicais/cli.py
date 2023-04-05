@@ -4,6 +4,7 @@ from rich.table import Table
 from typer import Argument, Typer
 
 from notas_musicais.acordes import acorde as _acorde
+from notas_musicais.campo_harmonico import campo_harmonico as _campo_harmonico
 from notas_musicais.escalas import escala as _escala
 
 app = Typer()
@@ -33,4 +34,20 @@ def acorde(
     for grau in graus_acorde:
         table.add_column(grau)
     table.add_row(*notas_acorde)
+    console.print(table)
+
+
+@app.command()
+def campo_harmonico(
+    tonica: str = Argument('C', help='Tônica do Campo Harmônico'),
+    tonalidade: str = Argument('maior', help='Tonalidade do campor harmônico'),
+):
+    console = Console()
+    table = Table()
+    acordes_campo_harmonico, graus_campo_harmonico = _campo_harmonico(
+        tonica, tonalidade
+    ).values()
+    for grau in graus_campo_harmonico:
+        table.add_column(grau)
+    table.add_row(*acordes_campo_harmonico)
     console.print(table)
